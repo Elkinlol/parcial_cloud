@@ -1,0 +1,130 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consola de automatización de servicios</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#ccc}
+header{background:#fff;padding:10px 24px;border-bottom:1px solid #aaa}
+header h1{margin:0;font-size:20px}header small{color:#555}
+main{padding:20px 24px;min-height:70vh}
+footer{background:#fff;text-align:center;padding:8px;font-size:12px}
+.cards{display:flex;gap:20px;flex-wrap:wrap}
+.card,.col{background:#eee;padding:16px;border-radius:4px;min-width:220px;flex:1}
+.cols{display:flex;gap:20px;flex-wrap:wrap}
+input[type=text],input[type=password],select{width:100%;padding:6px;margin:6px 0;box-sizing:border-box}
+button,.btn{border:0;color:#fff;padding:7px 12px;border-radius:3px;cursor:pointer;text-decoration:none;font-size:13px;display:inline-block}
+.g{background:#4cae4c}.r{background:#d9534f}.b{background:#337ab7}.k{background:#777}
+.ok{background:#dff0d8;padding:10px}.err{background:#f2dede;padding:10px}
+pre{background:#222;color:#ddd;padding:10px;overflow:auto;max-height:300px}
+.warn{color:#a00;font-weight:bold;font-size:13px}
+</style></head><body>
+<header><h1>Consola de automatización de servicios</h1>
+<small>Computación en la nube 2026 - 2 · Canal: {{.Mode}}{{if ne .Module "home"}} · <a href="/">Inicio</a>{{end}}</small></header>
+<main>
+{{if .Msg}}<div class="{{if .Failed}}err{{else}}ok{{end}}"><b>{{.Msg}}</b>
+{{if .KeyName}}<p><a class="btn b" href="/download?f={{.KeyName}}">Descargar llave privada</a><br>
+<small>Guárdela en un lugar seguro, no la comparta, ejecute <code>chmod 600</code> sobre el archivo y úsela con <code>ssh -i llave.pem {{.KeyName}}@IP</code>. Se eliminó de la VM.</small></p>{{end}}
+{{if .Detail}}<pre>{{.Detail}}</pre>{{end}}</div><br>{{end}}
+
+{{if eq .Module "home"}}
+<div class="cards">
+<div class="card"><h3>Preparación del sistema</h3><a class="btn g" href="/prep">Ir al módulo</a></div>
+<div class="card"><h3>Gestión de Usuarios</h3><a class="btn g" href="/users">Ir al módulo</a></div>
+<div class="card"><h3>Gestión de Servicios</h3><a class="btn g" href="/svc">Ir al módulo</a></div>
+<div class="card"><h3>Balanceador HAProxy</h3><a class="btn g" href="/lb">Ir al módulo</a></div>
+<div class="card"><h3>Conexión</h3><a class="btn b" href="/config">Configurar VMs</a></div>
+</div>
+
+{{else if eq .Module "prep"}}
+<h2>Preparación del sistema</h2>
+<div class="cols">
+<form class="col" method="post"><h3>Instalar aplicación</h3>
+<input type="text" name="pkg" placeholder="openssh-server" required>
+<button class="g" formaction="/prep/install">Instalar</button>
+<button class="r" formaction="/prep/remove">Eliminar</button></form>
+
+<form class="col" method="post" action="/prep/rootkey"><h3>Configuración de llaves</h3>
+<p>Generación y configuración de llaves SSH.<br><span class="warn">Únicamente usuario root</span></p>
+<button class="b">Generar y configurar llaves SSH</button>
+{{if eq .Mode "SSH (llave)"}}<p><a class="btn b" href="/download?f=root">Descargar llave privada</a></p>{{end}}</form>
+
+<form class="col" method="post" action="/prep/issue"><h3>Personalización del sistema</h3>
+<label><input type="checkbox" name="host" checked> Nombre del host</label><br>
+<label><input type="checkbox" name="fecha" checked> Fecha actual</label><br>
+<label><input type="checkbox" name="hora" checked> Hora actual</label><br>
+<label><input type="checkbox" name="ip" checked> Dirección IP</label><br>
+<b>Mensaje personalizado</b><input type="text" name="msg" maxlength="200">
+<button class="g">Aplicar</button></form>
+
+<form class="col" method="post" action="/prep/hostname"><h3>Asignar nombre de host</h3>
+<input type="text" name="hostname" placeholder="app-web1" required>
+<button class="g">Aplicar cambios</button></form>
+</div>
+
+{{else if eq .Module "users"}}
+<h2>Gestión de Usuarios</h2>
+<div class="cols">
+<form class="col" method="post" action="/users/create"><h3>Crear usuario</h3>
+<input type="text" name="user" placeholder="Nombre de usuario" required>
+<input type="password" name="pass" placeholder="Contraseña" required>
+<label><input type="checkbox" name="sudo"> Asignar privilegios de sudo</label><br>
+<label><input type="checkbox" name="key"> Generar llave SSH</label><br><br>
+<button class="g">Crear</button></form>
+
+<form class="col" method="post" action="/users/delete"><h3>Eliminar usuario</h3>
+<select name="user" required><option value="">Usuarios</option>{{range .Users}}<option>{{.}}</option>{{end}}</select>
+<label><input type="checkbox" name="files"> Eliminar todos los archivos</label><br><br>
+<button class="r">Eliminar</button></form>
+</div>
+{{else if eq .Module "svc"}}
+<h2>Gestión de Servicios</h2>
+<div class="cols">
+<form class="col" method="post" action="/svc/deploy" enctype="multipart/form-data"><h3>Desplegar como servicio</h3>
+<input type="text" name="name" placeholder="nombre-del-servicio" required>
+<input type="file" name="file" required><small>Ejecutable, script o .tar.gz</small>
+<input type="text" name="exec" placeholder="Ejecutable dentro del paquete (ej. catalogo)" required>
+<input type="text" name="args" placeholder="Argumentos (opcional)">
+<label><input type="checkbox" name="runroot"> Ejecutar como root</label><br><br>
+<button class="g">Desplegar</button></form>
+<form class="col" method="post" action="/svc/action"><h3>Control del servicio</h3>
+<input type="text" name="name" placeholder="nombre-del-servicio" required><br>
+<button class="g" name="act" value="start">Iniciar</button>
+<button class="b" name="act" value="restart">Reiniciar</button>
+<button class="r" name="act" value="stop">Detener</button>
+<button class="k" name="act" value="status">Estado</button><br><br>
+<button class="g" name="act" value="enable">Enable</button>
+<button class="r" name="act" value="disable">Disable</button></form>
+<div class="col"><h3>Estado del servicio</h3><pre>{{.Status}}</pre></div>
+</div>
+{{else if eq .Module "lb"}}
+<h2>Balanceador de carga HAProxy</h2>
+<div class="cols">
+<form class="col" method="post" action="/lb/add"><h3>Agregar servidor al back-end</h3>
+<input type="text" name="name" placeholder="web1" required>
+<input type="text" name="ip" placeholder="IP (192.168.1.50)" required>
+<input type="text" name="port" placeholder="Puerto" value="80" required>
+<button class="g">Agregar</button></form>
+<div class="col"><h3>Servidores del back-end</h3>
+{{range .Servers}}<form method="post" action="/lb/del">{{.Name}} → {{.Addr}} <input type="hidden" name="name" value="{{.Name}}"> <button class="r">Quitar</button></form><br>{{else}}<small>Sin servidores</small>{{end}}</div>
+<form class="col" method="post" action="/lb/rootkey"><h3>Acceso SSH al balanceador</h3>
+<button class="b">Generar y configurar llaves SSH</button>
+<p><a class="btn b" href="/download?f=lb-root">Descargar llave privada</a></p></form>
+</div>
+{{else if eq .Module "config"}}
+<h2>Conexión con las VMs</h2>
+<form method="post" action="/config" class="cols">
+<div class="col"><h3>VM principal</h3>
+<input type="text" name="vm" placeholder="Nombre en VirtualBox" value="{{.Cfg.VMName}}">
+<input type="text" name="guser" placeholder="Usuario" value="{{.Cfg.GuestUser}}">
+<input type="password" name="gpass" placeholder="Contraseña (vacío = conservar)">
+<input type="text" name="host" placeholder="IP de la VM" value="{{.Cfg.Host}}"></div>
+<div class="col"><h3>VM balanceador</h3>
+<input type="text" name="lvm" placeholder="Nombre en VirtualBox" value="{{.LB.VMName}}">
+<input type="text" name="luser" placeholder="Usuario" value="{{.LB.GuestUser}}">
+<input type="password" name="lpass" placeholder="Contraseña (vacío = conservar)">
+<input type="text" name="lhost" placeholder="IP del balanceador" value="{{.LB.Host}}"></div>
+<div class="col"><button class="g">Guardar y probar conexión</button>
+<p><small>Se guarda en config.json.</small></p></div></form>
+{{end}}
+</main>
+<footer>Elkin Bermudez Grajales</footer>
+</body></html>

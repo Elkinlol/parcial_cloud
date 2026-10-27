@@ -1,0 +1,12 @@
+=== 2026-10-26T19:15:16-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+touch /etc/haproxy/consola-servers.list; cat /etc/haproxy/consola-servers.list
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Could not find a registered machine named 'balanceador'
+VBoxManage.exe: error: Details: code VBOX_E_OBJECT_NOT_FOUND (0x80bb0001), component VirtualBoxWrap, interface IVirtualBox, callee IUnknown
+VBoxManage.exe: error: Context: "FindMachine(Bstr(pCtx->pszVmNameOrUuid).raw(), machine.asOutParam())" at line 676 of file VBoxManageGuestCtrl.cpp
+
