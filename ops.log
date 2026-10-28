@@ -10,3 +10,613 @@ VBoxManage.exe: error: Could not find a registered machine named 'balanceador'
 VBoxManage.exe: error: Details: code VBOX_E_OBJECT_NOT_FOUND (0x80bb0001), component VirtualBoxWrap, interface IVirtualBox, callee IUnknown
 VBoxManage.exe: error: Context: "FindMachine(Bstr(pCtx->pszVmNameOrUuid).raw(), machine.asOutParam())" at line 676 of file VBoxManageGuestCtrl.cpp
 
+=== 2026-10-28T10:55:12-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+apt-get install -y 'open-sshserver'
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Could not find a registered machine named 'debian-pruebas'
+VBoxManage.exe: error: Details: code VBOX_E_OBJECT_NOT_FOUND (0x80bb0001), component VirtualBoxWrap, interface IVirtualBox, callee IUnknown
+VBoxManage.exe: error: Context: "FindMachine(Bstr(pCtx->pszVmNameOrUuid).raw(), machine.asOutParam())" at line 676 of file VBoxManageGuestCtrl.cpp
+
+=== 2026-10-28T10:56:40-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Machine "servidor1" is not running (currently powered off)!
+
+=== 2026-10-28T10:56:40-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Could not find a registered machine named 'balanceador'
+VBoxManage.exe: error: Details: code VBOX_E_OBJECT_NOT_FOUND (0x80bb0001), component VirtualBoxWrap, interface IVirtualBox, callee IUnknown
+VBoxManage.exe: error: Context: "FindMachine(Bstr(pCtx->pszVmNameOrUuid).raw(), machine.asOutParam())" at line 676 of file VBoxManageGuestCtrl.cpp
+
+=== 2026-10-28T10:56:50-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Machine "servidor1" is not running (currently powered off)!
+
+=== 2026-10-28T10:56:50-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Machine "servidor3" is not running (currently powered off)!
+
+=== 2026-10-28T10:58:18-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Waiting for guest process failed: The specified user was not able to logon on guest
+VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession, callee IUnknown
+VBoxManage.exe: error: Context: "WaitForArray(ComSafeArrayAsInParam(aSessionWaitFlags), 30 * 1000, &enmWaitResult)" at line 772 of file VBoxManageGuestCtrl.cpp
+
+=== 2026-10-28T10:58:18-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Machine "servidor3" is not running (currently powered off)!
+
+=== 2026-10-28T10:59:02-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servidor1
+
+--- stderr
+
+=== 2026-10-28T10:59:02-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Waiting for guest process failed: The guest execution service is not ready (yet)
+VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession, callee IUnknown
+VBoxManage.exe: error: Context: "WaitForArray(ComSafeArrayAsInParam(aSessionWaitFlags), 30 * 1000, &enmWaitResult)" at line 772 of file VBoxManageGuestCtrl.cpp
+
+=== 2026-10-28T10:59:23-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servidor1
+
+--- stderr
+
+=== 2026-10-28T10:59:23-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Waiting for guest process failed: The guest execution service is not ready (yet)
+VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession, callee IUnknown
+VBoxManage.exe: error: Context: "WaitForArray(ComSafeArrayAsInParam(aSessionWaitFlags), 30 * 1000, &enmWaitResult)" at line 772 of file VBoxManageGuestCtrl.cpp
+
+=== 2026-10-28T10:59:35-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servidor1
+
+--- stderr
+
+=== 2026-10-28T10:59:35-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Waiting for guest process failed: The guest execution service is not ready (yet)
+VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession, callee IUnknown
+VBoxManage.exe: error: Context: "WaitForArray(ComSafeArrayAsInParam(aSessionWaitFlags), 30 * 1000, &enmWaitResult)" at line 772 of file VBoxManageGuestCtrl.cpp
+
+=== 2026-10-28T10:59:38-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servidor1
+
+--- stderr
+
+=== 2026-10-28T10:59:38-05:00 err=exit status 1
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+VBoxManage.exe: error: Waiting for guest process failed: The guest execution service is not ready (yet)
+VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession, callee IUnknown
+VBoxManage.exe: error: Context: "WaitForArray(ComSafeArrayAsInParam(aSessionWaitFlags), 30 * 1000, &enmWaitResult)" at line 772 of file VBoxManageGuestCtrl.cpp
+
+=== 2026-10-28T11:00:02-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servidor1
+
+--- stderr
+
+=== 2026-10-28T11:00:02-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servidor1
+
+--- stderr
+
+=== 2026-10-28T11:00:17-05:00 err=exit status 126
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+apt-get install -y 'open-sshserver'
+--- stdout
+Reading package lists...
+Building dependency tree...
+Reading state information...
+
+--- stderr
+E: Unable to locate package open-sshserver
+
+=== 2026-10-28T11:00:28-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+H='/root'; U='root'
+install -d -m700 -o "$U" -g "$U" "$H/.ssh"
+rm -f "$H/.ssh/id_ed25519" "$H/.ssh/id_ed25519.pub"
+ssh-keygen -q -t ed25519 -N '' -C "$U@consola" -f "$H/.ssh/id_ed25519"
+cp "$H/.ssh/id_ed25519.pub" "$H/.ssh/authorized_keys"
+chown -R "$U:$U" "$H/.ssh"; chmod 600 "$H/.ssh/authorized_keys"
+printf 'PermitRootLogin prohibit-password\nPasswordAuthentication no\nPubkeyAuthentication yes\n' > /etc/ssh/sshd_config.d/00-consola.conf
+sshd -t && systemctl reload ssh
+cat "$H/.ssh/id_ed25519"
+--- stdout
+[salida con llave privada omitida]
+--- stderr
+
+=== 2026-10-28T11:00:28-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+shred -u '/root'/.ssh/id_ed25519
+--- stdout
+
+--- stderr
+
+=== 2026-10-28T11:00:30-05:00 err=exit status 255
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+echo ok
+--- stdout
+
+--- stderr
+banner exchange: Connection to UNKNOWN port -1: Connection refused
+
+=== 2026-10-28T11:00:34-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+H='/root'; U='root'
+install -d -m700 -o "$U" -g "$U" "$H/.ssh"
+rm -f "$H/.ssh/id_ed25519" "$H/.ssh/id_ed25519.pub"
+ssh-keygen -q -t ed25519 -N '' -C "$U@consola" -f "$H/.ssh/id_ed25519"
+cp "$H/.ssh/id_ed25519.pub" "$H/.ssh/authorized_keys"
+chown -R "$U:$U" "$H/.ssh"; chmod 600 "$H/.ssh/authorized_keys"
+printf 'PermitRootLogin prohibit-password\nPasswordAuthentication no\nPubkeyAuthentication yes\n' > /etc/ssh/sshd_config.d/00-consola.conf
+sshd -t && systemctl reload ssh
+cat "$H/.ssh/id_ed25519"
+--- stdout
+[salida con llave privada omitida]
+--- stderr
+
+=== 2026-10-28T11:00:34-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+shred -u '/root'/.ssh/id_ed25519
+--- stdout
+
+--- stderr
+
+=== 2026-10-28T11:00:36-05:00 err=exit status 255
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+echo ok
+--- stdout
+
+--- stderr
+banner exchange: Connection to UNKNOWN port -1: Connection refused
+
+=== 2026-10-28T11:00:52-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostnamectl set-hostname 'servicio1'
+sed -i '/^127\.0\.1\.1/d' /etc/hosts
+echo "127.0.1.1	servicio1" >> /etc/hosts
+hostname; cat /etc/hosts
+--- stdout
+servicio1
+127.0.0.1	localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+127.0.1.1	servicio1
+
+--- stderr
+
+=== 2026-10-28T11:01:02-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+getent passwd | awk -F: '$3>=1000 && $3<60000 {print $1}'
+--- stdout
+elkin
+
+--- stderr
+
+=== 2026-10-28T11:01:07-05:00 err=exit status 33
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+touch /etc/haproxy/consola-servers.list; cat /etc/haproxy/consola-servers.list
+--- stdout
+
+--- stderr
+touch: cannot touch '/etc/haproxy/consola-servers.list': No such file or directory
+
+=== 2026-10-28T11:01:13-05:00 err=exit status 126
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+apt-get install -y 'open-sshserver'
+--- stdout
+Reading package lists...
+Building dependency tree...
+Reading state information...
+
+--- stderr
+E: Unable to locate package open-sshserver
+
+=== 2026-10-28T11:01:56-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+apt-get install -y 'openssh-server'
+--- stdout
+Reading package lists...
+Building dependency tree...
+Reading state information...
+openssh-server is already the newest version (1:10.0p1-7+deb13u4).
+openssh-server set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 6 not upgraded.
+
+--- stderr
+
+=== 2026-10-28T11:03:04-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+H='/root'; U='root'
+install -d -m700 -o "$U" -g "$U" "$H/.ssh"
+rm -f "$H/.ssh/id_ed25519" "$H/.ssh/id_ed25519.pub"
+ssh-keygen -q -t ed25519 -N '' -C "$U@consola" -f "$H/.ssh/id_ed25519"
+cp "$H/.ssh/id_ed25519.pub" "$H/.ssh/authorized_keys"
+chown -R "$U:$U" "$H/.ssh"; chmod 600 "$H/.ssh/authorized_keys"
+printf 'PermitRootLogin prohibit-password\nPasswordAuthentication no\nPubkeyAuthentication yes\n' > /etc/ssh/sshd_config.d/00-consola.conf
+sshd -t && systemctl reload ssh
+cat "$H/.ssh/id_ed25519"
+--- stdout
+[salida con llave privada omitida]
+--- stderr
+
+=== 2026-10-28T11:03:04-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+shred -u '/root'/.ssh/id_ed25519
+--- stdout
+
+--- stderr
+
+=== 2026-10-28T11:03:06-05:00 err=exit status 255
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+echo ok
+--- stdout
+
+--- stderr
+banner exchange: Connection to UNKNOWN port -1: Connection refused
+
+=== 2026-10-28T11:05:23-05:00 err=exit status 255
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+Warning: Permanently added '192.168.1.6' (ED25519) to the list of known hosts.
+Bad permissions. Try removing permissions for user: BUILTIN\\Usuarios (S-1-5-32-545) on file C:/consola/consola-cloud/keys/root.pem.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions for 'keys/root.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "keys/root.pem": bad permissions
+root@192.168.1.6: Permission denied (publickey).
+
+=== 2026-10-28T11:05:23-05:00 err=exit status 255
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+Bad permissions. Try removing permissions for user: BUILTIN\\Usuarios (S-1-5-32-545) on file C:/consola/consola-cloud/keys/root.pem.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions for 'keys/root.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "keys/root.pem": bad permissions
+root@192.168.1.6: Permission denied (publickey).
+
+=== 2026-10-28T11:05:23-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servicio1
+
+--- stderr
+
+=== 2026-10-28T11:05:23-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servicio1
+
+--- stderr
+
+=== 2026-10-28T11:09:45-05:00 err=exit status 255
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+Load key "keys/root.pem": Permission denied
+root@192.168.1.6: Permission denied (publickey).
+
+=== 2026-10-28T11:09:45-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servicio1
+
+--- stderr
+
+=== 2026-10-28T11:14:52-05:00 err=exit status 255
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+Load key "keys/root.pem": Permission denied
+root@192.168.1.6: Permission denied (publickey).
+
+=== 2026-10-28T11:14:52-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servicio1
+
+--- stderr
+
+=== 2026-10-28T11:14:55-05:00 err=exit status 255
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+Load key "keys/root.pem": Permission denied
+root@192.168.1.6: Permission denied (publickey).
+
+=== 2026-10-28T11:14:55-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servicio1
+
+--- stderr
+
+=== 2026-10-28T11:14:57-05:00 err=exit status 255
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+Load key "keys/root.pem": Permission denied
+root@192.168.1.6: Permission denied (publickey).
+
+=== 2026-10-28T11:14:57-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servicio1
+
+--- stderr
+
+=== 2026-10-28T11:15:08-05:00 err=exit status 255
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+
+--- stderr
+Load key "keys/root.pem": Permission denied
+root@192.168.1.6: Permission denied (publickey).
+
+=== 2026-10-28T11:15:08-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servicio1
+
+--- stderr
+
+=== 2026-10-28T11:18:47-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servicio1
+
+--- stderr
+
+=== 2026-10-28T11:18:47-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servicio1
+
+--- stderr
+
+=== 2026-10-28T11:18:51-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servicio1
+
+--- stderr
+
+=== 2026-10-28T11:18:51-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+hostname
+--- stdout
+servicio1
+
+--- stderr
+
+=== 2026-10-28T11:18:59-05:00 err=<nil>
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+H='/root'; U='root'
+install -d -m700 -o "$U" -g "$U" "$H/.ssh"
+rm -f "$H/.ssh/id_ed25519" "$H/.ssh/id_ed25519.pub"
+ssh-keygen -q -t ed25519 -N '' -C "$U@consola" -f "$H/.ssh/id_ed25519"
+cp "$H/.ssh/id_ed25519.pub" "$H/.ssh/authorized_keys"
+chown -R "$U:$U" "$H/.ssh"; chmod 600 "$H/.ssh/authorized_keys"
+printf 'PermitRootLogin prohibit-password\nPasswordAuthentication no\nPubkeyAuthentication yes\n' > /etc/ssh/sshd_config.d/00-consola.conf
+sshd -t && systemctl reload ssh
+cat "$H/.ssh/id_ed25519"
+--- stdout
+[salida con llave privada omitida]
+--- stderr
+
+=== 2026-10-28T11:19:05-05:00 err=exit status 255
+--- script
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+H='/root'; U='root'
+install -d -m700 -o "$U" -g "$U" "$H/.ssh"
+rm -f "$H/.ssh/id_ed25519" "$H/.ssh/id_ed25519.pub"
+ssh-keygen -q -t ed25519 -N '' -C "$U@consola" -f "$H/.ssh/id_ed25519"
+cp "$H/.ssh/id_ed25519.pub" "$H/.ssh/authorized_keys"
+chown -R "$U:$U" "$H/.ssh"; chmod 600 "$H/.ssh/authorized_keys"
+printf 'PermitRootLogin prohibit-password\nPasswordAuthentication no\nPubkeyAuthentication yes\n' > /etc/ssh/sshd_config.d/00-consola.conf
+sshd -t && systemctl reload ssh
+cat "$H/.ssh/id_ed25519"
+--- stdout
+
+--- stderr
+root@192.168.1.6: Permission denied (publickey).
+

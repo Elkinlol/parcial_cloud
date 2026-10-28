@@ -1,0 +1,16 @@
+{
+  "VM": {
+    "VMName": "servidor1",
+    "GuestUser": "root",
+    "GuestPass": "12Elkin12",
+    "Host": "192.168.1.6",
+    "KeyPath": "keys/root.pem"
+  },
+  "LB": {
+    "VMName": "servidor1",
+    "GuestUser": "root",
+    "GuestPass": "12Elkin12",
+    "Host": "10.0.2.15",
+    "KeyPath": "keys/lb-root.pem"
+  }
+}

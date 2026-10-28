@@ -145,6 +145,7 @@ cat "$H/.ssh/id_ed25519"`, q(home), q(user), hardenSSH))
 	if err := os.WriteFile(filepath.Join("keys", file+".pem"), []byte(priv), 0o600); err != nil {
 		return err
 	}
+	protectKey(filepath.Join("keys", file+".pem"))
 	// la llave privada ya está en el servidor web: se elimina de la VM
 	_, err = e.Run(fmt.Sprintf(`shred -u %s/.ssh/id_ed25519`, q(home)))
 	return err

@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"sync"
 	"time"
@@ -118,3 +119,13 @@ func logOp(script, out, errOut string, err error) {
 
 // q escapa un valor para usarlo dentro de un script bash.
 func q(s string) string { return "'" + strings.ReplaceAll(s, "'", `'\''`) + "'" }
+
+func protectKey(p string) {
+	if runtime.GOOS == "windows" {
+		who, err := exec.Command("whoami").Output()
+		if err != nil {
+			return
+		}
+		exec.Command("icacls", p, "/inheritance:r", "/grant:r", strings.TrimSpace(string(who))+":(F)").Run()
+	}
+}
